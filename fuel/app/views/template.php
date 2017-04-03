@@ -10,8 +10,9 @@ session_start();
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <?php echo Asset::css(array('bootstrap.css','font-awesome.min.css','font-awesome.css')); ?>
-    <?php echo Asset::css('style.css'); ?>
+    <?= Asset::css(array('style.css','bootstrap.css','font-awesome.min.css','font-awesome.css')); ?>
+    <?= Asset::js(array('bootstrap.min.js','jquery-1.11.1.min.js','jquery.dropotron.min.js',
+        'jquery.scrolly.min.js','skel.min.js', 'skel-viewport.min.js', 'util.js', 'main.js'));?>
 
 </head>
 <body>
@@ -20,8 +21,6 @@ session_start();
     <?php echo $banner;?>
 
     <?php echo $content; ?>
-
-    <?php // echo $signin; ?>
 
     <?php echo $footer; ?>
 </body>
