@@ -245,7 +245,7 @@ return array(
 	// ),
 
 	/**
-	 * To enable you to split up your additions to the framework, packages are
+	e * To enable you to split up your additions to the framework, packages are
 	 * used. You can define the basepaths for your packages here. By default
 	 * empty, but to use them you can add something like this:
 	 *      array(APPPATH.'modules'.DS)
@@ -259,7 +259,8 @@ return array(
 	/**************************************************************************/
 	/* Always Load                                                            */
 	/**************************************************************************/
-	// 'always_load'  => array(
+        
+	 'always_load'  => array(
 
 		/**
 		 * These packages are loaded on Fuel's startup.
@@ -272,9 +273,10 @@ return array(
 		 *     array('auth'	=> PKGPATH.'auth/')
 		 * );
 		 */
-		// 'packages'  => array(
-		// 	//'orm',
-		// ),
+		 'packages'  => array(
+		 	'orm',
+		 ),
+             
 
 		/**
 		 * These modules are always loaded on Fuel's startup. You can specify them
@@ -310,6 +312,6 @@ return array(
 		 * If you don't want the lang in a group use null as groupname.
 		 */
 		// 'language'  => array(),
-	// ),
+	 ),
 
 );

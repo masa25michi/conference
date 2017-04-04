@@ -19,7 +19,7 @@ session_start();
     <?php echo $header;?>
 
     <?php echo $banner;?>
-
+    
     <?php echo $content; ?>
 
     <?php echo $footer; ?>
