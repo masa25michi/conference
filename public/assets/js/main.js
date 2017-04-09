@@ -71,9 +71,9 @@
 
 			// Title Bar.
 				$(
-					'<div id="titleBar">' +
+					'<div id="titleBar" >' +
 						'<a href="#navPanel" class="toggle"></a>' +
-						'<span class="title">Welcome to HK Conference Mobile</span>' +
+						'<span class="title">Conference 2017</span>' +
 					'</div>'+
 					'<div id="titleBar" class = "notice" style = "background-color:red; display:none;">' +
 						'<a href="#navPanel" class="toggle"></a>' +

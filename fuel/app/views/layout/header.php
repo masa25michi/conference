@@ -8,7 +8,7 @@
 
 echo "<div id = 'top'><nav id='nav'>";
         echo "<ul class='container'>";
-                echo "<li><a href='index.php#top'>Home</a></li>";
+                echo "<li><a href='index'>Home</a></li>";
                 echo "<li><a href='#'>Menu</a>
                                         <ul>
                                                 <li><a href='about.php'>About</a></li>

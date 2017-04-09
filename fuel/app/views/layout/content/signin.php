@@ -1,4 +1,3 @@
-<!-- Sign in -->			
 <div class="wrapper style3" id = 'register'>
         <article id = 'Sign_in' >
                 <?php
@@ -16,8 +15,9 @@
                                 <header>
                                         <h2>Sign in</h2>
                                 </header>
-                                <form method='POST' action='user_page.php' style="display: inline-block;">
-                                        <p>TEL</p>
+                                <!--<form method='POST' action='' style="display: inline-block;">-->
+                                <?php echo Form::open(array('action' => 'main/userpage', 'method' => 'POST')); ?>
+<!--                                        <p>TEL</p>
                                         <input type='text' name='tel' id='tel' placeholder='TEL' size = "40"/> <br>
 
                                         <p>Password</p>
@@ -29,9 +29,19 @@
                                         <ul class='actions'>
                                         <li><input type='submit' name = 'signIn' value='Sign in' /></li>
                                         <li><input type='reset' value='Clear' class='alt' /></li>
-                                        </ul>
-                                </form>
-                                <?php
+                                        </ul>-->
+                                    
+                                    <p><?php echo Form::label('Tel', 'tel'); ?></p>
+                                    <p><?php echo Form::input('tel','',array('size'=>'40', 'placeholder'=>'TEL')); ?></p>
+                                    
+                                    
+                                    <p><?php echo Form::label('Email', 'email'); ?></p>
+                                    <p><?php echo Form::password('email','',array('size'=>'40', 'placeholder'=>'Email')); ?></p>
+                                    <br><ul class='actions'>
+                                        <li><?php echo Form::input('submit', 'Sign In', array('type'=>'submit'));  ?></li>
+                                        <li><?php echo Form::input('reset','Reset', array('type'=>'reset','class'=>'alt')); ?></li>
+                                    </ul>
+                                    <?php echo Form::close();
                         }
                 ?>
 

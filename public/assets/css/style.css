@@ -1,4 +1,7 @@
 
+
+/*img { max-width: 100%; height: auto; }*/
+
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 		margin: 0;
 		padding: 0;
@@ -6,7 +9,7 @@
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
-		/*font-family:*/ 
+		font-family: Arial;
 	}
 
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -1087,7 +1090,7 @@
 		-ms-transition: color .2s ease-in-out;
 		transition: color .2s ease-in-out;
 		color: #43B3E0;
-		text-decoration: underline;
+		text-decoration: none;
 	}
 
 		a:hover {
@@ -2231,7 +2234,7 @@
 				top: 0;
 				width: 100%;
 				z-index: 10001;
-				background-color: #333;
+				background-color: #0F2856;
 				height: 44px;
 				line-height: 44px;
 				box-shadow: 0 4px 0 0 #37c0fb;
@@ -2286,7 +2289,7 @@
 					}
 
 			#navPanel {
-				background-color: #1f1f1f;
+				background-color: #0F2856;
 				box-shadow: inset -1px 0 3px 0 rgba(0, 0, 0, 0.5);
 				backface-visibility: hidden;
 				-moz-transform: translateX(-275px);
@@ -2375,7 +2378,6 @@
 	}
 	
 
-
 /* Mobile */
 
 	@media screen and (max-width: 736px) {
@@ -2386,16 +2388,19 @@
 				line-height: 1.75em;
 				font-size: 10pt;
 				letter-spacing: 0;
+                                color:#0F2856;
 			}
 
 			h1, h2, h3, h4, h5, h6 {
-				font-size: 1.25em;
+				font-size: 1.5em;
 				margin: 0 0 0.4em 0;
+                                color:#0F2856;
 			}
 
 			h1 {
-				font-size: 2.25em;
+				font-size: 1.8em;
 				line-height: 1.25em;
+                                color:#0F2856;
 			}
 
 			header {
@@ -2490,7 +2495,8 @@
 				min-height:140px;
 				height:115px;
 				max-width:110px;
-				font-size:11px;*/
+				*/
+                                font-size:12px;
 
 				padding: 20px 20px 20px 20px;
 				margin: 0 0 5px 0 !important;
@@ -2519,6 +2525,7 @@
 
 				.box i {
 					font-size:55px;
+                                        color:#0F2856;
 				}
 
 				
