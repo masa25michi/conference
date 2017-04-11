@@ -2,6 +2,7 @@
 
 class Controller_Main extends Controller_Template
 {
+      
     public function before(){
         parent::before();
         
@@ -13,9 +14,7 @@ class Controller_Main extends Controller_Template
     
     public function action_index()
     {   
-        $data = array();
-        $data['banner_title'] = '3rd Global Tourism and Hospitality Conference';
-        
+        $data['banner_title'] = Constant::CONFERENCE_NAME;
         $this->template->banner = View::forge('layout/banner', $data, false);
         $this->template->content = View::forge('layout/content/index');
         $this->template->footer = View::forge('layout/footer_with_sponsor');
@@ -38,7 +37,7 @@ class Controller_Main extends Controller_Template
     }
     
     public function action_signin(){
-        $data = array();
+        
         $data['banner_title'] = 'Sign In';
         
         $this->template->banner = View::forge('layout/banner', $data, false);
@@ -47,9 +46,7 @@ class Controller_Main extends Controller_Template
     }
     
     public function action_signout(){
-        $data = array();
-        $data['banner_title'] = '3rd Global Tourism and Hospitality Conference';
-        
+        $data['banner_title'] = Constant::CONFERENCE_NAME;
         Cookie::delete('tel');
         $this->template->banner = View::forge('layout/banner', $data, false);
         $this->template->content = View::forge('layout/content/index');
@@ -57,13 +54,12 @@ class Controller_Main extends Controller_Template
     }
     
     public function action_userpage(){
+        $data['banner_title'] = Constant::CONFERENCE_NAME;
         $data['banner_title'] = 'HK Conference User Page';
         $this->template->footer = View::forge('layout/footer_with_sponsor');
         $this->template->banner = View::forge('layout/banner', $data, FALSE);
         
-        if(!is_null(Cookie::get('tel'))){
-            $this->template->content = View::forge('layout/content/userpage', $data, FALSE);
-        }else{
+        if(is_null(Cookie::get('tel'))){
             $val = $this->forge_validation();
             if($val->run()){
                 $data['input'] = $val->validated();
@@ -72,27 +68,35 @@ class Controller_Main extends Controller_Template
                         'tel' => $data['input']['tel'],
                         'email' => $data['input']['email']
                 )));
-
                 if(is_null($result)){
                     $this->template->content = View::forge('layout/content/index', $data, FALSE);
                     $this->template->content->set_safe('html_error', 'Sign In Failed');
-
+                    return;
                 }else{
-                    $data =array('server' => $result);
                     Cookie::set('tel',$result['tel']);
-                    $this->template->content = View::forge('layout/content/userpage', $data, FALSE);
                 }
-
             }else{
                 $data['banner_title'] = 'Hi This is Mobile Test <br> with FuelPHP';
                 $this->template->content = View::forge('layout/content/index', $data, FALSE);
                 $this->template->content->set_safe('html_error', 'Please Sign In');
+                return;
             }
-        }   
+        }
+
+        //query for user's time table program
+        $query  = 'SELECT ev.EventId as eventId, ev.BegTime, ev.EndTime, ev.Title, ev.Venue, ev.Date FROM Event AS ev ';
+        $query .= 'LEFT JOIN UserEvent AS ue ON ev.EventId = ue.EventId ';
+        $query .= 'WHERE ue.UserTel = '.Cookie::get('tel').' ORDER BY ev.BegTime ASC;';
+
+        $result = DB::query($query)->as_object('Model_Userevent')->execute(); //execute query3
+        
+        $data =array('server' => $result);
+  
+        $this->template->content = View::forge('layout/content/userpage', $data, FALSE);
     }
     
     public function action_search(){
-        $data['banner_title'] = 'Search';
+        $data['banner_title'] = Constant::CONFERENCE_NAME;
         $this->template->footer = View::forge('layout/footer_with_sponsor');
         $this->template->banner = View::forge('layout/banner', $data, FALSE);
 
@@ -154,7 +158,6 @@ class Controller_Main extends Controller_Template
     }
     
     public function action_survey(){
-        $data = array();
         $data['banner_title'] = 'Survey';
         
         $this->template->banner = View::forge('layout/banner', $data, false);
@@ -163,12 +166,103 @@ class Controller_Main extends Controller_Template
     }
     
     public function action_acknowledgement(){
-        $data = array();
-        $data['banner_title'] = '3rd Global Tourism and Hospitality Conference<br>Acknowledgements';
+        $data['banner_title'] = Constant::CONFERENCE_NAME;
         
         $this->template->banner = View::forge('layout/banner', $data, false);
         $this->template->content = View::forge('layout/content/acknowledgement');
         $this->template->footer = View::forge('layout/footer');
+    }
+    
+    public function action_program(){
+        $data['banner_title'] = Constant::CONFERENCE_NAME;
+        
+        $query1=(self::getQuery(1));    //get query of information of conference where its id = 1
+        $query2=(self::getQuery(2));    //get query of information of conference where its id = 2
+        $query3=(self::getQuery(3));    //get query of information of conference where its id = 3
+            
+        $result1  = DB::query($query1)->as_object('Model_Conference')->execute(); //execute query1
+        $result2  = DB::query($query2)->as_object('Model_Conference')->execute(); //execute query2
+        $result3  = DB::query($query3)->as_object('Model_Conference')->execute(); //execute query3
+        
+        $data['server1'] = $result1;
+        $data['server2'] = $result2;
+        $data['server3'] = $result3;
+        
+        $program_view = View::forge('layout/content/program', $data, false);
+        $program_view->banner = View::forge('layout/banner/signbanner');
+        $this->template->banner = View::forge('layout/banner', $data, false);
+        $this->template->content = $program_view;
+        $this->template->footer = View::forge('layout/footer_with_sponsor');
+    }
+    
+    public function getQuery($day){
+        
+        $query  = 'SELECT ev.EventId as eventId, ev.BegTime, ev.EndTime, ev.Title, ev.Venue, ev.Date FROM Conference AS con ';
+        $query .= 'LEFT JOIN Event AS ev ON con.ConferenceId=ev.ConferenceId ';
+        $query .= 'WHERE con.ConferenceId = '.$day.' ORDER BY ev.BegTime ASC;';
+        
+        return $query;
+    }
+    
+    public function action_addschedule(){
+        if(input::is_ajax()){
+            $eventId = Input::post('addData');
+            
+            $sql = "SELECT * FROM UserEvent WHERE UserTel ='".Cookie::get('tel')."' AND EventId ='".$eventId."';";
+            $result = DB::query($sql)->as_object('Model_Userevent')->execute(); //execute query3
+            
+            if($result->count()>0){
+                return "Already";
+            }
+            
+            // prepare an insert statement
+            $query = DB::insert('UserEvent');
+
+            // Set the columns
+            $query->columns(array(
+                'UserTel',
+                'EventId',
+            ));
+
+            // Set the values
+
+            $query->values(array(
+                
+                Cookie::get('tel'),
+                $eventId
+            ));
+            
+            
+
+            $result = DB::query($query)->as_object('Model_Userevent')->execute();
+           
+            return "OK";
+            
+        }
+    }
+    
+    public function action_removeschedule(){
+        if(input::is_ajax()){
+            $eventId = Input::post('removeData');
+
+            
+            $sql = "SELECT * FROM UserEvent WHERE UserTel ='".Cookie::get('tel')."' AND EventId ='".$eventId."';";
+            $result = DB::query($sql)->as_object('Model_Userevent')->execute(); //execute query3
+            
+            if($result->count()>0){
+                //$sql = "DELETE from UserEvent WHERE EventId=".$eventId;
+                // prepare a delete statement
+                $query = DB::delete('UserEvent');
+
+                // Set a where statement
+                $query->where('EventId',$eventId );
+                $result = DB::query($query)->as_object('Model_Userevent')->execute();
+                return "Deleted";
+            }else{
+                return "Not Found Row";
+            }
+            
+        }
     }
 
 }

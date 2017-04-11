@@ -7,7 +7,7 @@
                                                 <li><a href='abstract'>Abstract</a></li>
                                                 <li><a href='acknowledgement'>Acknowledgement</a></li>
                                                 <li><a href='im'>Chat</a></li>
-                                                <li><a href='programme'>Programme</a></li>
+                                                <li><a href='program'>Programme</a></li>
                                                 <li><a href='floorPlans'>Location</a></li>
                                                 <li><a href='survey'>Survey</a></li>
                                                 

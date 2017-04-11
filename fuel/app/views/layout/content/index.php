@@ -94,10 +94,10 @@
                             
                             <div class="4u 12u">
                                     <!--<a href = "programme">-->
-                                    <a href = '<?php echo Uri::create('/main/programme'); ?>'>
+                                    <a href = '<?php echo Uri::create('/main/program'); ?>'>
                                         <article class="box style1">
                                             <i class="icon material-icons" >today</i>
-                                            <p><b>Programme</b></p>
+                                            <p><b>Program</b></p>
                                         </article>
                                         
                                     </a>

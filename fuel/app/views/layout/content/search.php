@@ -47,7 +47,7 @@
 
 		}
 
-		echo "<div class='style1 ' style = 'background-color: white; text-align: center;'>";
+		echo "<div class='style1 ' style='box-shadow: inset 0px 1px 0px 0px rgba(0, 0, 0, 0.05), inset 0px 2px 3px 0px rgba(0, 0, 0, 0.1);'>";
 		if(count($server)>0){
 
 			?>

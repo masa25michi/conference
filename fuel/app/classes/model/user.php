@@ -18,13 +18,13 @@ class Model_User extends \Orm\Model{
 //        // リレーション指定する際の関係性を示す名前を付ける
 //        'use_food' => array(
 //            // 紐づけるモデル  
-//            'model_to'       => 'Model_Usefood',
+//            'model_to'       => 'Model_Userevent',
 //            // このモデル（店舗）のキー
 //            // 反対側のモデルとの結合条件となる項目を示す
-//            'key_from'       => 'id',
+//            'key_from'       => 'tel',
 //            // 関連するモデルでのキー
 //            // 反対側のモデルで結合条件となる項目を示す
-//            'key_to'         => 'shop_id',
+//            'key_to'         => 'UserTel',
 //            // 関係するテーブルが保存されるときに同時にアップデートするか
 //            'cascade_save'   => false,
 //            // 親テーブルの関連レコードが削除されるときに同時に削除するか
