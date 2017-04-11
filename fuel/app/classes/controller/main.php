@@ -1,5 +1,6 @@
 <?php
 
+
 class Controller_Main extends Controller_Template
 {
       
@@ -264,5 +265,7 @@ class Controller_Main extends Controller_Template
             
         }
     }
+    
+    
 
 }
