@@ -8,7 +8,6 @@
     <h1>Menu</h1>
         <article id="registeration">
                 <div class="container">
-                    <!--<h1 style='color:#0F2856;'>Sign In</h1>-->
                         <div class="row" >
                             <?php
                                 if(is_null(Cookie::get('tel'))){
@@ -20,7 +19,6 @@
                                                 <i class="fa fa-sign-in" aria-hidden="true" ></i>
                                                 <p ><b>Sign In</b></p>
                                             </article>
-
                                         </a>
                                     </div>
                                     <div style='width: 50%;clear: none;margin-left: 0;'>
@@ -97,7 +95,7 @@
                                     <a href = '<?php echo Uri::create('/main/program'); ?>'>
                                         <article class="box style1">
                                             <i class="icon material-icons" >today</i>
-                                            <p><b>Program</b></p>
+                                            <p><b>Programme</b></p>
                                         </article>
                                         
                                     </a>
@@ -118,7 +116,7 @@
                             
                             <div class="4u 12u menuicon">
                                     <!--<a href = "abstract">-->
-                                    <a href = '<?php echo Uri::create('/main/abstract'); ?>'>
+                                    <a href = '<?php echo Uri::create('/main/abstracts'); ?>'>
                                         <article class="box style1">
                                             <i class="icon material-icons" >toc</i>
                                             <p><b>Abstracts</b></p>
@@ -156,7 +154,7 @@
                             <p><?php echo Form::input('keyword','',array('size'=>'40', 'placeholder'=>'Keyword')); ?></p>
 
                             <br><ul class='actions'>
-                                <li><?php echo Form::input('submit', 'Sign In', array('type'=>'submit'));  ?></li>
+                                <li><?php echo Form::input('submit', 'Search', array('type'=>'submit'));  ?></li>
                                 <li><?php echo Form::input('reset','Reset', array('type'=>'reset','class'=>'alt')); ?></li>
                             </ul>
                         <?php echo Form::close(); ?> 

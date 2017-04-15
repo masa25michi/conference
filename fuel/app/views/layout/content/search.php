@@ -1,5 +1,12 @@
+
+<?php
+    if(isset($html_error)){
+        echo '<p style="text-align:center; color:red;">'.$html_error.'</p>';
+    }
+?>
 <!-- Search -->
 <div class="wrapper style3" id="search">
+    
         <article id="search">
                 <header>
                     <h2>Search</h2><br>
@@ -10,7 +17,7 @@
                             <p><?php echo Form::input('keyword','',array('size'=>'40', 'placeholder'=>'Keyword')); ?></p>
 
                             <br><ul class='actions'>
-                                <li><?php echo Form::input('submit', 'Sign In', array('type'=>'submit'));  ?></li>
+                                <li><?php echo Form::input('submit', 'Search', array('type'=>'submit'));  ?></li>
                                 <li><?php echo Form::input('reset','Reset', array('type'=>'reset','class'=>'alt')); ?></li>
                             </ul>
                         <?php echo Form::close(); ?> 
@@ -31,7 +38,7 @@
 			array_push($key_array, 'location');
 		}
 		if(strpos ('programme', $key)!==false){
-			array_push($key_array, 'programme');
+			array_push($key_array, 'program');
 		}
 		if(strpos ('acknowledgement',$key) !==false){
 			array_push($key_array, 'acknowledgement');
@@ -97,11 +104,7 @@
 				echo '</tr>';
 			}
 			echo '</tbody></table></div><br><br>';
-		}else{
-			echo "<br><h4>Conference Events:</h4><p>No result...</p>";
 		}
-		
-		
 	}
 
 
@@ -141,7 +144,7 @@
 		switch ($appName){
 			case "survey":
 				echo '
-					<a href = "survey.php">
+					<a href = "'.Uri::create('/main/survey').'">
 						<article class="box style1" >
 							<i class="icon material-icons" >assignment</i>
 							<p><b>Survey</b></p>
@@ -153,7 +156,7 @@
 
 			case "location":
 				echo '
-					<a href="floorPlans.php">
+					<a href="'.Uri::create('/main/location').'">
 						<article class="box style1">
 							 <i class="icon material-icons" >location_on</i>
 							<p><b>Location</b></p>
@@ -163,9 +166,9 @@
 
 			break;
 
-			case "programme":
+			case "program":
 				echo '
-					<a href="programme.php">
+					<a href="'.Uri::create('/main/program').'">
 						<article class="box style1" >
 							<i class="icon material-icons" >today</i>
 							<p><b>Programme</b></p>
@@ -192,7 +195,7 @@
 
 			case "abstract":
 				echo '
-					<a href="abstract.php">
+					<a href="'.Uri::create('/main/abstracts').'">
 						<article class="box style1" >
 							<i class="icon material-icons" >toc</i>
 							<p><b>Abstract</b></p>

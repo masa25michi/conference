@@ -1,7 +1,7 @@
 <?php
 
 class Model_Userevent extends \Orm\Model{
-    protected static $_table_name = 'UserEvent';
+    protected static $_table_name = 'userEvent';
     
 //    protected static $_primary_key = array('tel');
     

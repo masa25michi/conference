@@ -1,7 +1,7 @@
 <?php
 
 class Model_Conference extends \Orm\Model{
-    protected static $_table_name = 'Conference';
+    protected static $_table_name = 'conference';
     
     protected static $_primary_key = array('ConferenceId');
     
@@ -16,7 +16,7 @@ class Model_Conference extends \Orm\Model{
      */
     protected static $_has_many = array(
         // リレーション指定する際の関係性を示す名前を付ける
-        'use_food' => array(
+        'conference_event' => array(
             // 紐づけるモデル  
             'model_to'       => 'Model_Event',
             // このモデル（店舗）のキー

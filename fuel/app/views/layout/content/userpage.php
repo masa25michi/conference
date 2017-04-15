@@ -58,7 +58,7 @@
         <article>
                 <?php
 
-			if(count($server)>0){
+			if($server->count()>0){
 				?>
 					<header>
 						<br>

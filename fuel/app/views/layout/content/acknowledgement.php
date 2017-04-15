@@ -116,7 +116,7 @@
 
             <article class="container">
                     <div class="row">
-                            <h2 style='color:#43B3E0;'>Organizer</h2><br><br>
+                            <h2 style='color:#43B3E0;'>Organiser</h2><br><br>
                             <div class="4u 12u(mobile)">
                                     <span class="image fit"><?php echo Asset::img('logo/polyu.jpg', array('alt'=>''));?></span>
                             </div>

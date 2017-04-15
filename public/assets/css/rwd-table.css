@@ -90,6 +90,23 @@ tbody th, td {
 .enhanced td.essential {
    display: table-cell;
 }
+.survey_table tr td{
+    /*border-right:1px solid white;*/
+    border:1px solid #0F2856;
+    /*padding:2px;*/
+    /*margin:2px;*/
+}
+.survey_table th{
+    /*border:1px solid white;*/
+    border: 1px solid white;
+    /*padding:1px;*/
+    /*margin:2px;*/
+    
+    font-size: 85%;
+}
+.survey_table thead th{
+    background-color: #0F2856;
+}
 
 
 

@@ -73,7 +73,7 @@
 				$(
 					'<div id="titleBar" >' +
 						'<a href="#navPanel" class="toggle"></a>' +
-						'<span class="title">Conference 2017</span>' +
+						'<span class="title">HONG KONG 2017 </span>' +
 					'</div>'+
 					'<div id="titleBar" class = "notice" style = "background-color:red; display:none;">' +
 						'<a href="#navPanel" class="toggle"></a>' +

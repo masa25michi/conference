@@ -1,14 +1,15 @@
 <?php
 
 class Model_User extends \Orm\Model{
-    protected static $_table_name = 'users';
+    protected static $_table_name = 'user';
     
     protected static $_primary_key = array('tel');
     
     protected static $_properties = array(
         'tel',
         'email',
-        'name'
+        'firstname',
+        'lastname'
     );
     /**
      * Has Many
